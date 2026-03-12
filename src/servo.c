@@ -73,7 +73,7 @@ void init_servo(void) {
 	TCCR1A = 0;
 	TCCR1B = (0 << CS12) | BIT(CS11) | (0 << CS10);
 	// Enable interrupts: output-compare A, output-compare B, and overflow.
-	TIMSK1 = BIT(OCIE1B) | BIT(OCIE1A) | BIT(TOIE1);
+	TIMSK1 = BIT(OCIE1A) | BIT(TOIE1);
 
 	TCNT1 = RESET_VALUE;
 
