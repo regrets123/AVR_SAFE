@@ -24,10 +24,11 @@ void uart_putuint(uint16_t val) {
 }
 
 void check_inputs(uint16_t *inputs, uint16_t *goalValues) {
+    int range = 70;
     for (uint8_t i = 0; i < 3; i++) {
         inputs[i] = adc_read(i);
-        uint16_t lower = goalValues[i] > 100 ? goalValues[i] - 100 : 0;
-        uint16_t upper = goalValues[i] < 923 ? goalValues[i] + 100 : 1023;
+        uint16_t lower = goalValues[i] > range ? goalValues[i] - range : 0;
+        uint16_t upper = goalValues[i] < 923 ? goalValues[i] + range : 1023;
         if (inputs[i] >= lower && inputs[i] <= upper)
             BIT_SET(inputLockState, i);
         else
